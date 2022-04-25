@@ -1,0 +1,31 @@
+{
+    "name": "fruitpiano",
+    "version": "0.0.1",
+    "description": "AdaFruit fruitpiano driver",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*",
+        "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.1"
+    },
+    "files": [
+        "README.md",
+        "fruitpiano.ts"
+    ],
+    "testFiles": [
+        "neotest.ts"
+    ],
+    "public": true,
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj",
+    "yotta": {
+        "config": {
+            "microbit-dal": {
+                "bluetooth": {
+                    "enabled": 0
+                }
+            }
+        }
+    }
+}
