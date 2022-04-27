@@ -12,32 +12,56 @@ namespace fruitpiano {
         //% blockId="Release" block="松开"
         Release = 1
     }
+    export enum DigitalPin2 {
+        P0 = 100,  // MICROBIT_ID_IO_P0
+        P1 = 101,  // MICROBIT_ID_IO_P1
+        P2 = 102,  // MICROBIT_ID_IO_P2
+        P5 = 105,  // MICROBIT_ID_IO_P5
+        P8 = 108,  // MICROBIT_ID_IO_P8
+        P9 = 109,  // MICROBIT_ID_IO_P9
+        P10 = 110,  // MICROBIT_ID_IO_P10
+        P11 = 111,  // MICROBIT_ID_IO_P11
+        P12 = 112,  // MICROBIT_ID_IO_P12
+        P13 = 113,  // MICROBIT_ID_IO_P13
+        P14 = 114,  // MICROBIT_ID_IO_P14
+        P15 = 115,  // MICROBIT_ID_IO_P15
+        P16 = 116,  // MICROBIT_ID_IO_P16
+        }
     /**
      * 控制按钮按下松开
      * 
      * */
-    //% blockId=Piano_Button block="钢琴键:|%pin|状态: %value"
+    //% blockId=Piano_Button block="触摸钢琴键:|%pin|状态: %value"
     //% weight=5
     //% blockGap=8
     //% color="#eb0ed9"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
-    export function Button(pin: DigitalPin, value: enButton): boolean {
-        pins.setPull(pin, PinPullMode.PullUp);
-        return pins.digitalReadPin(pin) == value;
+    export function Button(pin: DigitalPin2, value: enButton): boolean {
+        pins.setPull(<DigitalPin><number>pin, PinPullMode.PullUp);
+        return pins.digitalReadPin(<DigitalPin><number>pin) == value;
     }
     
     
     
     //引脚
     export enum touch_pin {
+        //% blockId="None1" block="无"
         None = 0,
+        //% blockId="C1" block="按键C"
         P2 = 2,
+        //% blockId="D1" block="按键D"
         P5 = 5,
+        //% blockId="E1" block="按键E"
         P8 = 8,
+        //% blockId="F1" block="按键F"
         P11 = 11,
+        //% blockId="G1" block="按键G"
         P12 = 12,
+        //% blockId="A1" block="按键A"
         P13 = 13,
+        //% blockId="B1" block="按键B"
         P14 = 14,
+        //% blockId="CH1" block="按键CH"
         P15 = 15
     }
 
@@ -84,40 +108,6 @@ namespace fruitpiano {
         jump_down,
         power_up,
         power_down
-    }
-    /**
-     * 播放音乐
-     * 
-     * */
-    //% blockId=Piano_Play_Music block="播放第几首音乐:|%index"
-    //% weight=5
-    //% blockGap=8
-    //% color="#eb0ed9"
-    //% index.min=0 index.max=19
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function Play_Music(index: number): void {
-        switch (index) {
-            case enMusic.dadadum: music.beginMelody(music.builtInMelody(Melodies.Dadadadum), MelodyOptions.Once); break;
-            case enMusic.birthday: music.beginMelody(music.builtInMelody(Melodies.Birthday), MelodyOptions.Once); break;
-            case enMusic.entertainer: music.beginMelody(music.builtInMelody(Melodies.Entertainer), MelodyOptions.Once); break;
-            case enMusic.prelude: music.beginMelody(music.builtInMelody(Melodies.Prelude), MelodyOptions.Once); break;
-            case enMusic.ode: music.beginMelody(music.builtInMelody(Melodies.Ode), MelodyOptions.Once); break;
-            case enMusic.nyan: music.beginMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.Once); break;
-            case enMusic.ringtone: music.beginMelody(music.builtInMelody(Melodies.Ringtone), MelodyOptions.Once); break;
-            case enMusic.funk: music.beginMelody(music.builtInMelody(Melodies.Funk), MelodyOptions.Once); break;
-            case enMusic.blues: music.beginMelody(music.builtInMelody(Melodies.Blues), MelodyOptions.Once); break;
-            case enMusic.wedding: music.beginMelody(music.builtInMelody(Melodies.Wedding), MelodyOptions.Once); break;
-            case enMusic.funereal: music.beginMelody(music.builtInMelody(Melodies.Funeral), MelodyOptions.Once); break;
-            case enMusic.punchline: music.beginMelody(music.builtInMelody(Melodies.Punchline), MelodyOptions.Once); break;
-            case enMusic.baddy: music.beginMelody(music.builtInMelody(Melodies.Baddy), MelodyOptions.Once); break;
-            case enMusic.chase: music.beginMelody(music.builtInMelody(Melodies.Chase), MelodyOptions.Once); break;
-            case enMusic.ba_ding: music.beginMelody(music.builtInMelody(Melodies.BaDing), MelodyOptions.Once); break;
-            case enMusic.wawawawaa: music.beginMelody(music.builtInMelody(Melodies.Wawawawaa), MelodyOptions.Once); break;
-            case enMusic.jump_up: music.beginMelody(music.builtInMelody(Melodies.JumpUp), MelodyOptions.Once); break;
-            case enMusic.jump_down: music.beginMelody(music.builtInMelody(Melodies.JumpDown), MelodyOptions.Once); break;
-            case enMusic.power_up: music.beginMelody(music.builtInMelody(Melodies.PowerUp), MelodyOptions.Once); break;
-            case enMusic.power_down: music.beginMelody(music.builtInMelody(Melodies.PowerDown), MelodyOptions.Once); break;
-        }
     }
     /**
      * 播放音乐
@@ -303,7 +293,7 @@ namespace fruitpiano {
      * 由引脚处地址是否与返回设置地址一致 来触发条件
      * 
      * */
-    //% blockId=Piano_KeyBoard_Touch block="判断按键与返回按键地址是否一致|按键： %value"
+    //% blockId=Piano_KeyBoard_Touch block="触摸钢琴键： %value"
     //% weight=5
     //% blockGap=8
     //% color="#eb0ed9"
@@ -353,5 +343,27 @@ namespace fruitpiano {
             }
         }
         return false;
+    }
+    
+    export enum AnalogPin3 {
+        P1 = 101,  // MICROBIT_ID_IO_P1
+        P2 = 102,  // MICROBIT_ID_IO_P2
+        P15 = 115,  // MICROBIT_ID_IO_P15
+        P16 = 116,  // MICROBIT_ID_IO_P16
+        }
+    /**
+      * 舵机
+      */
+    //% blockId=ABT_Servo1 block="舵机引脚|%pin|角度|%value|延迟(毫秒)|%value2"
+    //% weight=5
+    //% blockGap=8
+    //% color="#eb0ed9"
+    //% value.min=0 value.max=180
+    //% value.defl=90
+    //% value2.min=0 value2.max=5000
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
+    export function Servo(pin2: AnalogPin3, value: number, value2: number): void {
+        pins.servoWritePin(<AnalogPin><number>pin2, value);
+        basic.pause(value2);
     }
 }
