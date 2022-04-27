@@ -354,7 +354,7 @@ namespace fruitpiano {
     /**
       * 舵机
       */
-    //% blockId=ABT_Servo1 block="舵机引脚|%pin|角度|%value|延迟(毫秒)|%value2"
+    //% blockId=ABT_Servo2 block="舵机引脚 %pin|角度 %value|延迟(毫秒) %value2"
     //% weight=5
     //% blockGap=8
     //% color="#eb0ed9"
@@ -362,8 +362,9 @@ namespace fruitpiano {
     //% value.defl=90
     //% value2.min=0 value2.max=5000
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
-    export function Servo(pin2: AnalogPin3, value: number, value2: number): void {
+    export function Servo(pin2: AnalogPin3, value: number, value2: number,a=100):number {
         pins.servoWritePin(<AnalogPin><number>pin2, value);
         basic.pause(value2);
+        return 0;
     }
 }
