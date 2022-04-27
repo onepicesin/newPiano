@@ -344,17 +344,16 @@ namespace fruitpiano {
         }
         return false;
     }
-    
     export enum AnalogPin3 {
         P1 = 101,  // MICROBIT_ID_IO_P1
         P2 = 102,  // MICROBIT_ID_IO_P2
         P15 = 115,  // MICROBIT_ID_IO_P15
         P16 = 116,  // MICROBIT_ID_IO_P16
-        }
+    }
     /**
       * 舵机
       */
-    //% blockId=ABT_Servo3 block="舵机引脚 %pin|角度 %value|延迟(毫秒) %value2"
+    //% blockId=ABT_Servo9 block="舵机引脚 %pin|角度 %value|延迟(毫秒) %value2"
     //% weight=5
     //% blockGap=8
     //% color="#eb0ed9"
@@ -362,7 +361,7 @@ namespace fruitpiano {
     //% value.defl=90
     //% value2.min=0 value2.max=5000
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
-    export function Servo(pin2: AnalogPin3, value: number, value2: number):void {
+    export function Servo(pin2: AnalogPin3, value: number, value2: number,value3:number): void {
         pins.servoWritePin(<AnalogPin><number>pin2, value);
         basic.pause(value2);
     }
