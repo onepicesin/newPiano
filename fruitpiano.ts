@@ -354,7 +354,7 @@ namespace fruitpiano {
     /**
       * 舵机
       */
-    //% blockId=ABT_Servo2 block="舵机引脚 %pin|角度 %value|延迟(毫秒) %value2"
+    //% blockId=ABT_Servo3 block="舵机引脚 %pin|角度 %value|延迟(毫秒) %value2"
     //% weight=5
     //% blockGap=8
     //% color="#eb0ed9"
