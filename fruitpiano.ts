@@ -31,7 +31,7 @@ namespace fruitpiano {
      * 控制按钮按下松开
      * 
      * */
-    //% blockId=Piano_Button block="触摸钢琴键:|%pin|状态: %value"
+    //% blockId=Piano_Button block="按键 引脚:|%pin|返回: %value"
     //% weight=5
     //% blockGap=8
     //% color="#eb0ed9"
@@ -47,21 +47,21 @@ namespace fruitpiano {
     export enum touch_pin {
         //% blockId="None1" block="无"
         None = 0,
-        //% blockId="C1" block="按键C"
+        //% blockId="C1" block="按键->2"
         P2 = 2,
-        //% blockId="D1" block="按键D"
+        //% blockId="D1" block="按键D->5"
         P5 = 5,
-        //% blockId="E1" block="按键E"
+        //% blockId="E1" block="按键E->8"
         P8 = 8,
-        //% blockId="F1" block="按键F"
+        //% blockId="F1" block="按键F->11"
         P11 = 11,
-        //% blockId="G1" block="按键G"
+        //% blockId="G1" block="按键G->12"
         P12 = 12,
-        //% blockId="A1" block="按键A"
+        //% blockId="A1" block="按键A->13"
         P13 = 13,
-        //% blockId="B1" block="按键B"
+        //% blockId="B1" block="按键B->14"
         P14 = 14,
-        //% blockId="CH1" block="按键CH"
+        //% blockId="CH1" block="按键CH->15"
         P15 = 15
     }
 
@@ -69,21 +69,21 @@ namespace fruitpiano {
     export enum touch {
         //% blockId="None" block="无"
         None = 0x0000,
-        //% blockId="C" block="按键C"
+        //% blockId="C" block="按键C->2"
         C = 0x0001,
-        //% blockId="D" block="按键D"
+        //% blockId="D" block="按键D->5"
         D = 0x0002,
-        //% blockId="E" block="按键E"
+        //% blockId="E" block="按键E->8"
         E = 0x0004,
-        //% blockId="F" block="按键F"
+        //% blockId="F" block="按键F->11"
         F = 0x0008,
-        //% blockId="G" block="按键G"
+        //% blockId="G" block="按键G->12"
         G = 0x0010,
-        //% blockId="A" block="按键A"
+        //% blockId="A" block="按键A->13"
         A = 0x0020,
-        //% blockId="B" block="按键B"
+        //% blockId="B" block="按键B->14"
         B = 0x0040,
-        //% blockId="CH" block="按键CH"
+        //% blockId="CH" block="按键CH->15"
         CH = 0x0080,
     }
     export enum enMusic {
@@ -149,27 +149,27 @@ namespace fruitpiano {
         buf[1] = value;
         pins.i2cWriteBuffer(addr, buf);
     }
-    /**
-     * 按键触摸返回
-     * 
-     * */
-    //% blockId=ABT_Touch block="按键触摸返回"
-    //% weight=5
-    //% blockGap=8
-    //% color="#eb0ed9"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
-    export function Touch(): number {
-        let a = 0;
-        let b = 0;
-        let c = 0;
-        //使用指定的数字格式在I2C地址向设备写入数字。 要写入一个字节无符号数大端
-        pins.i2cWriteNumber(0x50, 8, NumberFormat.UInt8BE, false);
-        //使用指定的数字格式从I2C地址读取一个数字。要读取一个字节无符号数大端
-        a = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, false); //true->false
-        b = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, false);
-        c = (b << 8) | a;
-        return c;
-    }
+    // /**
+    //  * 按键触摸返回
+    //  * 
+    //  * */
+    // //% blockId=ABT_Touch block="按键触摸返回"
+    // //% weight=5
+    // //% blockGap=8
+    // //% color="#eb0ed9"
+    // //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
+    // export function Touch(): number {
+    //     let a = 0;
+    //     let b = 0;
+    //     let c = 0;
+    //     //使用指定的数字格式在I2C地址向设备写入数字。 要写入一个字节无符号数大端
+    //     pins.i2cWriteNumber(0x50, 8, NumberFormat.UInt8BE, false);
+    //     //使用指定的数字格式从I2C地址读取一个数字。要读取一个字节无符号数大端
+    //     a = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, false); //true->false
+    //     b = pins.i2cReadNumber(0x50, NumberFormat.UInt8BE, false);
+    //     c = (b << 8) | a;
+    //     return c;
+    // }
     /**
      * 控制音量
      * 
