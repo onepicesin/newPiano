@@ -361,8 +361,9 @@ namespace fruitpiano {
     //% value.defl=90
     //% value2.min=0 value2.max=5000
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
-    export function Servo(pin2: AnalogPin3, value: number, value2: number,value3:number): void {
+    export function Servo(pin2: AnalogPin3, value: number, value2: number,value3=3): void {
         pins.servoWritePin(<AnalogPin><number>pin2, value);
         basic.pause(value2);
     }
+    
 }
