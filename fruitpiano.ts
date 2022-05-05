@@ -47,7 +47,7 @@ namespace fruitpiano {
     export enum touch_pin {
         //% blockId="None1" block="无"
         None = 0,
-        //% blockId="C1" block="按键->2"
+        //% blockId="C1" block="按键C->2"
         P2 = 2,
         //% blockId="D1" block="按键D->5"
         P5 = 5,
