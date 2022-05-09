@@ -1,7 +1,7 @@
 {
-    "name": "M_Car",
+    "name": "fruitpiano",
     "version": "0.0.1",
-    "description": "M_Car",
+    "description": "fruitpiano",
     "license": "MIT",
     "dependencies": {
         "core": "*",
