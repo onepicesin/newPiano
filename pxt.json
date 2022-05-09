@@ -1,7 +1,7 @@
 {
-    "name": "fruitpiano",
+    "name": "M_Car",
     "version": "0.0.1",
-    "description": "AdaFruit fruitpiano driver",
+    "description": "M_Car",
     "license": "MIT",
     "dependencies": {
         "core": "*",
